@@ -1,0 +1,19 @@
+{
+  "name": "heroku_dpe",
+  "version": "1.0.0",
+  "description": "Testing circle pipeline to heroku",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "circleCI",
+    "pipeline",
+    "heroku"
+  ],
+  "author": "viljami",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
