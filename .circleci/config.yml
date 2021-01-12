@@ -4,6 +4,4 @@ orbs:
 workflows:
   heroku_deploy:
     jobs:
-      - push-docker-image:
-          image: dmlsamftaq/heroku_pipeline
-          tag: 'latest'
+      - heroku/debloy-via-git
