@@ -1,15 +1,29 @@
-machine:
-  services:
-    - docker
+version: 2
+jobs:
+  build:
+    steps:
+      - run:
+          name: Build image
+          command: docker build -t registry.heroku.com/$HEROKU_APP_NAME/web .
+  login:
+      steps:
+        - run:
+            name: Docker login 
+            command: docker login --email=$HEROKU_LOGIN --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY registry.heroku.com
+  push:
+      steps:
+        - run:
+            name: Docker push 
+            command: docker push registry.heroku.com/$HEROKU_APP_NAME/web:latest  
+            
 
-dependencies:
-  cache_directories:
-    - ~/docker
-
-deployment:
-  production:
-    branch: main
-      commands:
-          - docker build -t registry.heroku.com/$HEROKU_APP_NAME/web .
-          - docker login --email=$HEROKU_LOGIN --username=$HEROKU_LOGIN --password=$HEROKU_API_KEY registry.heroku.com
-          - docker push registry.heroku.com/$HEROKU_APP_NAME/web:latest 
+workflows:
+  version: 2
+  minimal:
+    jobs:
+      - build
+      - login
+      - push
+        requires:
+          - build
+          - login
