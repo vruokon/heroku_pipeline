@@ -9,7 +9,7 @@ jobs:
     steps:
       - heroku/install
       - run:
-          command: 'heroku container:release -a  pelinexercise dweb'
+          command: 'heroku container:release -a  pipelinexercise web'
 
 workflows:
   build-deploy-publish:
