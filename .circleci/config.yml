@@ -24,6 +24,3 @@ workflows:
       - build
       - login
       - push
-        requires:
-          - build
-          - login
