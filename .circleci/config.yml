@@ -17,7 +17,6 @@ workflows:
       - docker/publish:
           image: dmlsamftaq/heroku_pipeline
           tag: latest
-          registry: registry.heroku.com
       - deploy2heroku:
           requires:
             - docker/publish
