@@ -15,7 +15,7 @@ workflows:
   build-deploy-publish:
     jobs:
       - docker/publish:
-          image: pipelinexercise/web
+          image: dmlsamftaq/heroku_pipeline
           tag: latest
           registry: registry.heroku.com
       - deploy2heroku:
